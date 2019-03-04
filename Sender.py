@@ -17,7 +17,7 @@ def send_email():
 	#critical for sending emails
 	subject = "An email sent with an attachment with Python"
 	body = "This email should be an image of a cow."
-	smp_server = "smtp.gmail.com"
+	smtp_server = "smtp.gmail.com"
 	sender_email = "aemtamu@gmail.com"
 	receiver_email = "aemtamu@gmail.com"
 
@@ -41,7 +41,7 @@ def send_email():
 	message.attach(MIMEText(body, "plain"))
 	#create a secure SSL context
 	context = ssl.create_default_context()
-	with smtplib.SMTP_SSL(smp_server, port, context=context) as server:
+	with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
 		server.login(sender_email, password)
 		server.sendmail(sender_email, receiver_email, message.as_string())
 	
